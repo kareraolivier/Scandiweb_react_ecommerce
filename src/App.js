@@ -1,11 +1,18 @@
-import "./App.css";
+import React, { Component } from "react";
+import { BrowserRouter } from "react-router-dom";
+import Route from "./routes/router";
+import NavBar from "./component/navbar/NavBar";
+import "./App.scss";
 
-function App() {
-  return (
-    <div className="App">
-      <p>React e-commerce project.</p>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <NavBar />
+        <Route />
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;

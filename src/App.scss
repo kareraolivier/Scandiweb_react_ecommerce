@@ -1,0 +1,177 @@
+* {
+  margin: 0;
+  color: #1D1F22;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Raleway';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.card_page {
+  padding: 5rem;
+}
+
+.navbar {
+  background-color: rgb(244, 252, 250);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
+  z-index: 2;
+  position: fixed;
+  width: 100%;
+
+
+  .links {
+    margin: 0 0 0 0.5rem;
+
+    ul {
+      text-decoration: none;
+      display: flex;
+
+      li {
+        list-style: none;
+        cursor: pointer;
+        margin: 0 1rem;
+        flex-direction: column;
+        color: #1D1F22;
+
+        a {
+          text-transform: uppercase;
+          text-decoration: none;
+
+          &:hover {
+            color: #5ECE7B;
+            transition: all 0.4s ease-in-out;
+          }
+        }
+
+        &:hover {
+          div {
+            background-color: #5ECE7B;
+            height: 2px;
+            width: 40px;
+            margin-bottom: 0;
+            transition: all 0.4s ease-in-out;
+
+          }
+        }
+
+      }
+    }
+
+    @media screen and (max-width:900px) {
+      display: none;
+    }
+  }
+
+  .logo {
+    height: 3rem;
+    width: 3rem;
+    margin: auto;
+
+    img {
+      height: 100%;
+      width: 100%;
+      cursor: pointer;
+    }
+  }
+
+  .cart {
+    height: 3rem;
+    width: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 3rem 0 0;
+
+    img {
+      height: 50%;
+      width: 25%;
+    }
+
+    p {
+      cursor: pointer;
+      margin: 0 1rem 0 0;
+    }
+  }
+
+  @media screen and (max-width:900px) {
+    .cart {
+      margin: 0 1rem 0 0;
+    }
+  }
+}
+
+.navbar_menu {
+  width: 35px;
+  height: 35px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    height: 2rem;
+    width: 3rem;
+    cursor: pointer;
+
+  }
+
+  div {
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 5;
+    height: 100vh;
+    width: 50%;
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    flex-direction: column;
+    background-color: rgb(244, 252, 250);
+    background-size: cover;
+    background-repeat: repeat;
+
+    ul {
+      text-decoration: none;
+
+      li {
+        list-style: none;
+        cursor: pointer;
+        margin: 2rem;
+        flex-direction: column;
+        color: #1D1F22;
+
+        a {
+          text-transform: uppercase;
+          text-decoration: none;
+
+          &:hover {
+            color: #5ECE7B;
+            transition: all 0.4s ease-in-out;
+          }
+        }
+      }
+
+    }
+
+
+
+  }
+
+  @media screen and (min-width:900px) {
+    display: none;
+  }
+}
