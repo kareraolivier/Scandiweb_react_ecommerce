@@ -14,19 +14,28 @@ export const Allcard = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 2rem 0 0 0;
-  @media screen and (max-width: 1312px) {
+  @media screen and (min-width: 1600px) {
     justify-content: space-around;
   }
+  @media screen and (max-width: 1354px) {
+    justify-content: space-around;
+  }
+
+  @media screen and (max-width: 900px) {
+  }
+`;
+export const Masterhearding = styled.h1`
+  font-weight: 600;
   @media screen and (max-width: 900px) {
   }
 `;
 
-export const Mainhearding = styled.h1`
+export const Mainhearding = styled.h2`
   font-weight: 300;
   @media screen and (max-width: 900px) {
   }
 `;
-export const Secondaryhearding = styled.h2`
+export const Secondaryhearding = styled.h3`
   font-weight: 500;
   font-size: 20px;
   display: flex;
@@ -40,7 +49,6 @@ export const Paragraph = styled.p`
   font-size: 20px;
   display: flex;
   align-items: center;
-
   color: #8d8f9a;
   @media screen and (max-width: 900px) {
   }
@@ -52,6 +60,10 @@ export const Content = styled.div`
   }
 `;
 export const Textwrapper = styled.span`
+  font-weight: 500;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
   @media screen and (max-width: 900px) {
   }
 `;
@@ -65,6 +77,16 @@ export const Column = styled.div`
   }
 `;
 export const Cart = styled.div`
+  @media screen and (max-width: 900px) {
+  }
+`;
+export const Primarybutton = styled.button`
+  width: 16rem;
+  height: 4rem;
+  color: white;
+  background-color: #5ece7b;
+  border: none;
+
   @media screen and (max-width: 900px) {
   }
 `;

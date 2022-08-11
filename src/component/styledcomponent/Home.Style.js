@@ -4,7 +4,6 @@ export const Cardimage = styled.div`
   display: flex;
   justify-content: space-around;
   padding-top: 3px;
-  /* position: relative; */
   @media screen and (max-width: 900px) {
   }
 `;
