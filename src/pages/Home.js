@@ -14,15 +14,29 @@ import {
 } from "../component/styledcomponent/Home.Style";
 
 import { images } from "../constants";
+import { graphql } from "react-apollo";
+import { GET_CATEGORY } from "./api/graphql";
+
 class AllCategories extends Component {
   //   constructor(props) {
   //     super(props);
   //   }
   state = {};
   render() {
+    console.log(this.props);
+    let data = this.props.data;
+    if (data.loading) return <p>Loading ...</p>;
     return (
       <>
         <Container>
+          {data.categories.map((category) => {
+            return (
+              <div key={category.name}>
+                <p>{category.name} </p>
+              </div>
+            );
+          })}
+
           <Mainhearding>Category name</Mainhearding>
           <Allcard>
             <Card>
@@ -83,4 +97,4 @@ class AllCategories extends Component {
   }
 }
 
-export default AllCategories;
+export default graphql(GET_CATEGORY)(AllCategories);

@@ -4,6 +4,9 @@ import { AiOutlineDown } from "react-icons/ai";
 import { BsList } from "react-icons/bs";
 import { BsX } from "react-icons/bs";
 import "../../App.scss";
+import { graphql } from "react-apollo";
+import { GET_CATEGORY } from "../../pages/api/graphql";
+
 class NavBar extends Component {
   constructor(props) {
     super(props);
@@ -14,7 +17,10 @@ class NavBar extends Component {
   };
 
   render() {
-    const category = ["women", "men", "kids"];
+    // const category = ["women", "men", "kids"];
+    console.log(this.props);
+    let data = this.props.data;
+    if (data.loading) return <p>Loading .</p>;
 
     return (
       <>
@@ -25,23 +31,27 @@ class NavBar extends Component {
               <div>
                 <BsX className="icon" onClick={this.hundleTuggle} />
                 <ul>
-                  {category.map((category) => (
-                    <li key={category} onClick={this.hundleTuggle}>
-                      <a href={`#${category}`}>{category}</a>
-                    </li>
-                  ))}
+                  {data?.categories?.map((category) => {
+                    return (
+                      <li key={category.name} onClick={this.hundleTuggle}>
+                        <a href={`#${category.name}`}>{category.name}</a>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             )}
           </div>
           <div className="links">
             <ul>
-              {category.map((category, index) => (
-                <li key={index}>
-                  <a href={`#${category}`}>{category}</a>
-                  <div />
-                </li>
-              ))}
+              {data?.categories?.map((category) => {
+                return (
+                  <li key={category.name}>
+                    <a href={`#${category.name}`}>{category.name}</a>
+                    <div />
+                  </li>
+                );
+              })}
             </ul>
           </div>
           <div className="logo">
@@ -59,4 +69,4 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+export default graphql(GET_CATEGORY)(NavBar);

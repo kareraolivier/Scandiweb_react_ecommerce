@@ -1,18 +1,18 @@
 * {
   margin: 0;
   color: #1D1F22;
+  font-family: 'Raleway', sans-serif;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Raleway';
+  font-family: 'Raleway';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-style: normal;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'Raleway';
 }
 
 .card_page {
@@ -36,6 +36,7 @@ code {
     ul {
       text-decoration: none;
       display: flex;
+      height: 100;
 
       li {
         list-style: none;
@@ -43,6 +44,13 @@ code {
         margin: 0 1rem;
         flex-direction: column;
         color: #1D1F22;
+        height: 100;
+        padding: 20px 0;
+
+        &:hover {
+          border-bottom: solid #5ECE7B;
+          transition: all 0.4s ease-in-out;
+        }
 
         a {
           text-transform: uppercase;
@@ -51,17 +59,6 @@ code {
           &:hover {
             color: #5ECE7B;
             transition: all 0.4s ease-in-out;
-          }
-        }
-
-        &:hover {
-          div {
-            background-color: #5ECE7B;
-            height: 2px;
-            width: 40px;
-            margin-bottom: 0;
-            transition: all 0.4s ease-in-out;
-
           }
         }
 
@@ -118,6 +115,8 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 0 0 2rem;
+
 
   svg {
     height: 2rem;
@@ -151,8 +150,10 @@ code {
         list-style: none;
         cursor: pointer;
         margin: 2rem;
+        font-weight: 700;
         flex-direction: column;
         color: #1D1F22;
+
 
         a {
           text-transform: uppercase;
