@@ -1,5 +1,5 @@
-import { gql } from "graphql-tag";
-// import { gql } from "apollo-boost";
+// import { gql } from "graphql-tag";
+import { gql } from "apollo-boost";
 
 export const GET_CATEGORY = gql`
   {
@@ -8,7 +8,22 @@ export const GET_CATEGORY = gql`
       products {
         id
         name
+        description
+        gallery
+        category
       }
+    }
+  }
+`;
+
+export const SINGLE_PRODUCT = gql`
+  {
+    product(id: $productId) {
+      id
+      name
+      description
+      gallery
+      category
     }
   }
 `;

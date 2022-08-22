@@ -4,6 +4,10 @@ This is a small react e-commerce project.
 
 ## Available Scripts
 
+In the project directory, you can install the project by runing this command:
+
+### `npm i`
+
 In the project directory, you can run:
 
 ### `npm start`

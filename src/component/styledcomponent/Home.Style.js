@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 export const Cardimage = styled.div`
-  display: flex;
-  justify-content: space-around;
-  padding-top: 3px;
+  margin: auto;
+  width: 300px;
+  height: 320px;
+
   @media screen and (max-width: 900px) {
   }
 `;
@@ -14,18 +15,18 @@ export const Buyicon = styled.div`
   flex-wrap: wrap;
   justify-content: flex-start;
   padding: 0;
-  width: 40px;
-  height: 35px;
+  width: 30px;
+  height: 27px;
   border-radius: 50% 50%;
   background-color: #5ece7b;
   padding: 1rem 0.7rem;
-  margin: -25px -280px 25px 280px;
+  margin: -30px -240px 30px 240px;
   cursor: pointer;
   @media screen and (max-width: 900px) {
   }
 `;
 export const Card = styled.div`
-  width: 375px;
+  width: 320px;
   height: 444px;
   padding: 10px;
   :hover {

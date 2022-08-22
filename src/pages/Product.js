@@ -18,15 +18,28 @@ import {
 } from "../component/styledcomponent/Product.Style";
 import { images } from "../constants";
 import Size from "../component/Size";
+// import { useRouter } from "react-router-dom";
+import { Query } from "react-apollo";
+import { SINGLE_PRODUCT } from "./api/graphql";
 
 class Product extends Component {
   // constructor(props) {
   //     super(props);
   // }
   state = {};
+
   render() {
+    // const router = useRouter();
+    // const { id } = router.query;
+    // console.log(id);
     return (
       <>
+        {/* <Query query={SINGLE_PRODUCT}>
+          {({ loading, error, data }) => {
+            console.log(data);
+            if (loading) return <p>loading....</p>;
+            if (error) return <p>error....</p>;
+            return ( */}
         <Container>
           <Mainhearding>Single product</Mainhearding>
           <Allcard>
@@ -105,6 +118,9 @@ class Product extends Component {
             </Productcontent>
           </Allcard>
         </Container>
+        {/* );
+          }}
+        </Query> */}
       </>
     );
   }

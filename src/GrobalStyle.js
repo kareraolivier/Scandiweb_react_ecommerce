@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   font-family: "Raleway", sans-serif;
   margin: 0 4rem;
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: #ffffff;
   @media screen and (max-width: 900px) {
     margin: 0 1rem;
@@ -13,7 +13,7 @@ export const Container = styled.div`
 export const Allcard = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 2rem 0 0 0;
   @media screen and (min-width: 1600px) {
     justify-content: space-around;
