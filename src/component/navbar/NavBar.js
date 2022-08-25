@@ -6,7 +6,7 @@ import { BsX } from "react-icons/bs";
 import "../../App.scss";
 import { Query } from "react-apollo";
 import { GET_CATEGORY } from "../../pages/api/graphql";
-
+import { Link } from "react-router-dom";
 class NavBar extends Component {
   constructor(props) {
     super(props);
@@ -53,7 +53,9 @@ class NavBar extends Component {
                 </ul>
               </div>
               <div className="logo">
-                <img src={images.Logo} alt="logo" />
+                <Link to="/">
+                  <img src={images.Logo} alt="logo" />
+                </Link>
               </div>
               <div className="cart">
                 <p>

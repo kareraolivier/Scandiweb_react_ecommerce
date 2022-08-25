@@ -38,7 +38,7 @@ export const Mainhearding = styled.h2`
 `;
 export const Secondaryhearding = styled.h3`
   font-weight: 500;
-  font-size: 20px;
+  font-size: 18px;
   display: flex;
   align-items: center;
   @media screen and (max-width: 900px) {
@@ -56,7 +56,7 @@ export const Paragraph = styled.p`
 `;
 
 export const Content = styled.div`
-  padding: 2rem 0.7rem;
+  padding: 1rem 0.7rem 0 0;
   @media screen and (max-width: 900px) {
   }
 `;

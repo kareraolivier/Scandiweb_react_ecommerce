@@ -12,14 +12,18 @@ import {
   Cardimage,
   Buyicon,
 } from "../component/styledcomponent/Home.Style";
-import { Link } from "react-router-dom";
 import { images } from "../constants";
 import { Query } from "react-apollo";
 import { GET_CATEGORY } from "./api/graphql";
 
 class AllCategories extends Component {
-  state = {};
-
+  constructor(props) {
+    super(props);
+    this.state = { select: null };
+  }
+  // singleProduct = () => {
+  //   console.log("clicked");
+  // };
   render() {
     return (
       <Query query={GET_CATEGORY}>
@@ -35,8 +39,16 @@ class AllCategories extends Component {
                     <Allcard>
                       {category?.products?.map((product) => {
                         return (
-                          <Card key={product.id}>
-                            <Link to={`/product/${product.id}`}>
+                          <a
+                            href={`/product/${this.state.select}`}
+                            style={{ textDecoration: "none" }}
+                          >
+                            <Card
+                              key={product.id}
+                              onClick={(e) => {
+                                this.setState({ select: product.id });
+                              }}
+                            >
                               <Cardimage>
                                 <img
                                   src={product.gallery[0]}
@@ -57,8 +69,8 @@ class AllCategories extends Component {
                                 <Paragraph>{product.name}</Paragraph>
                                 <Secondaryhearding>$50,00</Secondaryhearding>
                               </Content>
-                            </Link>
-                          </Card>
+                            </Card>
+                          </a>
                         );
                       })}
                     </Allcard>

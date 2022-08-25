@@ -7,6 +7,7 @@ import {
   Content,
   Masterhearding,
   Primarybutton,
+  Paragraph,
 } from "../GrobalStyle";
 import {
   Smallimage,
@@ -18,112 +19,119 @@ import {
 } from "../component/styledcomponent/Product.Style";
 import { images } from "../constants";
 import Size from "../component/Size";
-// import { useRouter } from "react-router-dom";
 import { Query } from "react-apollo";
 import { SINGLE_PRODUCT } from "./api/graphql";
+import { useParams } from "react-router-dom";
+
+function withParams(Component) {
+  return (props) => <Component {...props} params={useParams()} />;
+}
 
 class Product extends Component {
-  // constructor(props) {
-  //     super(props);
-  // }
-  state = {};
+  constructor(props) {
+    super(props);
+    this.state = { id: null };
+    this.state = { image: 0 };
+  }
+  componentDidMount = () => {
+    const { id } = this.props.params;
+    console.log(this.props, id);
+    this.getId(id);
+  };
 
+  getId = (id) => {
+    setTimeout(() => {
+      this.setState({
+        id: id,
+      });
+      console.log("heykarera1", typeof id);
+    }, 10);
+  };
   render() {
-    // const router = useRouter();
-    // const { id } = router.query;
-    // console.log(id);
+    const id = this.state.id;
+
     return (
-      <>
-        {/* <Query query={SINGLE_PRODUCT}>
-          {({ loading, error, data }) => {
-            console.log(data);
-            if (loading) return <p>loading....</p>;
-            if (error) return <p>error....</p>;
-            return ( */}
-        <Container>
-          <Mainhearding>Single product</Mainhearding>
-          <Allcard>
-            <Images>
-              <Smallimage>
-                <Onesmallimage>
-                  {" "}
-                  <img
-                    src={images.Product}
-                    alt="first"
-                    width="100%"
-                    height="100%"
-                  />
-                </Onesmallimage>
-                <Onesmallimage>
-                  {" "}
-                  <img
-                    src={images.Product}
-                    alt="first"
-                    width="100%"
-                    height="100%"
-                  />
-                </Onesmallimage>
-                <Onesmallimage>
-                  {" "}
-                  <img
-                    src={images.Product}
-                    alt="first"
-                    width="100%"
-                    height="100%"
-                  />
-                </Onesmallimage>
-              </Smallimage>
-              <Mainimage>
-                <Image>
-                  <img
-                    src={images.Product}
-                    alt="shirt"
-                    width="100%"
-                    height="100%"
-                  />
-                </Image>
-              </Mainimage>
-            </Images>
-            <Productcontent>
-              <Masterhearding>Apollo</Masterhearding>
-              <Mainhearding>Running short</Mainhearding>
+      <Query query={SINGLE_PRODUCT} variables={{ id }}>
+        {({ loading, error, data }) => {
+          console.log(data);
+          if (loading) return <p>loading....</p>;
+          if (error) return <p>error....</p>;
 
-              <Content>
-                <h4>SIZE:</h4>
-                <Size color="black" bcolor="white" text="XS" />
-                <Size color="white" bcolor="black" text="S" />
-                <Size color="black" bcolor="white" text="M" />
-                <Size color="black" bcolor="white" text="L" />
-              </Content>
+          const { id, name, category, description, gallery, brand } =
+            data.product;
+          let number = gallery.length;
 
-              <Content>
-                <h4>COLOR:</h4>
-                <Size color="white" bcolor="black" text="" />
-                <Size color="white" bcolor="#5ECE7B" text="" />
-                <Size color="white" bcolor="white" text="" />
-              </Content>
+          return (
+            <Container>
+              <Allcard>
+                <Images>
+                  <Smallimage>
+                    {data?.product?.gallery?.map((gallery, index) => {
+                      return (
+                        <Onesmallimage
+                          onClick={(e) => {
+                            this.setState({ image: index });
+                          }}
+                        >
+                          {" "}
+                          <img
+                            src={gallery}
+                            alt="first"
+                            width="100%"
+                            height="100%"
+                          />
+                        </Onesmallimage>
+                      );
+                    })}
+                  </Smallimage>
+                  <Mainimage>
+                    <Image>
+                      <img
+                        src={gallery[this.state.image]}
+                        alt="shirt"
+                        width="100%"
+                        height="100%"
+                      />
+                    </Image>
+                  </Mainimage>
+                </Images>
 
-              <Content>
-                <h4>PRICE:</h4>
-                <Masterhearding>$ 50,00</Masterhearding>
-              </Content>
-              <Primarybutton>ADD TO CART</Primarybutton>
-              <Content>
-                <Secondaryhearding>
-                  Find stunning women's cocktail dresses and party dresses.
-                  Stand out in lace and metallic cocktail dresses and party
-                  dresses from all your favorite brands.
-                </Secondaryhearding>
-              </Content>
-            </Productcontent>
-          </Allcard>
-        </Container>
-        {/* );
-          }}
-        </Query> */}
-      </>
+                <Productcontent>
+                  <Masterhearding>{brand}</Masterhearding>
+                  <Mainhearding> {name}</Mainhearding>
+
+                  <Content>
+                    <h4>SIZE:</h4>
+                    <Size color="black" bcolor="white" text="XS" />
+                    <Size color="white" bcolor="black" text="S" />
+                    <Size color="black" bcolor="white" text="M" />
+                    <Size color="black" bcolor="white" text="L" />
+                  </Content>
+
+                  <Content>
+                    <h4>COLOR:</h4>
+                    <Size color="white" bcolor="black" text="" />
+                    <Size color="white" bcolor="#5ECE7B" text="" />
+                    <Size color="white" bcolor="white" text="" />
+                  </Content>
+
+                  <Content>
+                    <h4>PRICE:</h4>
+                    <Masterhearding>$ 50,00</Masterhearding>
+                  </Content>
+                  <Primarybutton>ADD TO CART</Primarybutton>
+                  <Content>
+                    <Secondaryhearding>{description}</Secondaryhearding>
+                  </Content>
+                </Productcontent>
+              </Allcard>
+            </Container>
+          );
+        }}
+      </Query>
     );
   }
 }
 
-export default Product;
+export default withParams(Product);
+// export default Product;

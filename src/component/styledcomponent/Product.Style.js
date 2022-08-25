@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Images = styled.div`
   display: flex;
+
   margin: 0 0 4rem 0;
   flex-direction: row;
   justify-content: space-between;
@@ -26,8 +27,10 @@ export const Onesmallimage = styled.div`
   margin: 1rem 0;
   width: 100px;
   height: 100px;
+  cursor: pointer;
   @media screen and (max-width: 900px) {
     margin: 1rem 1rem;
+    height: 80px;
   }
 `;
 
@@ -39,9 +42,10 @@ export const Mainimage = styled.div`
 `;
 export const Image = styled.div`
   width: 580px;
-  height: 500px;
+  height: 600px;
   display: flex;
   justify-content: center;
+  background-color: red;
   @media screen and (max-width: 900px) {
     padding: 0 1rem;
     width: 480px;

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Routes, Route } from "react-router-dom";
-import { Home, Cart, Products } from "../pages";
+import { Home, Cart, Products, Notfound } from "../pages";
 
 class route extends Component {
   state = {};
@@ -10,7 +10,8 @@ class route extends Component {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/product" element={<Products />} />
+          <Route path="/product/:id" element={<Products />} />
+          <Route path="*" element={<Notfound />} />
         </Routes>
       </>
     );

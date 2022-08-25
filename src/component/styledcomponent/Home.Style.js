@@ -27,8 +27,9 @@ export const Buyicon = styled.div`
 `;
 export const Card = styled.div`
   width: 320px;
-  height: 444px;
+  height: 430px;
   padding: 10px;
+  cursor: pointer;
   :hover {
     box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
   }
