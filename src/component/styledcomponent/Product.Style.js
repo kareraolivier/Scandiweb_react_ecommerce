@@ -45,7 +45,7 @@ export const Image = styled.div`
   height: 600px;
   display: flex;
   justify-content: center;
-  background-color: red;
+  background-color: ${(props) => props.color};
   @media screen and (max-width: 900px) {
     padding: 0 1rem;
     width: 480px;

@@ -7,7 +7,6 @@ import {
   Content,
   Masterhearding,
   Primarybutton,
-  Paragraph,
 } from "../GrobalStyle";
 import {
   Smallimage,
@@ -17,7 +16,6 @@ import {
   Image,
   Images,
 } from "../component/styledcomponent/Product.Style";
-import { images } from "../constants";
 import Size from "../component/Size";
 import { Query } from "react-apollo";
 import { SINGLE_PRODUCT } from "./api/graphql";
@@ -35,7 +33,7 @@ class Product extends Component {
   }
   componentDidMount = () => {
     const { id } = this.props.params;
-    console.log(this.props, id);
+    // console.log(this.props, id);
     this.getId(id);
   };
 
@@ -44,7 +42,6 @@ class Product extends Component {
       this.setState({
         id: id,
       });
-      console.log("heykarera1", typeof id);
     }, 10);
   };
   render() {
@@ -53,16 +50,14 @@ class Product extends Component {
     return (
       <Query query={SINGLE_PRODUCT} variables={{ id }}>
         {({ loading, error, data }) => {
-          console.log(data);
           if (loading) return <p>loading....</p>;
           if (error) return <p>error....</p>;
 
           const { id, name, category, description, gallery, brand } =
             data.product;
-          let number = gallery.length;
 
           return (
-            <Container>
+            <Container key={id}>
               <Allcard>
                 <Images>
                   <Smallimage>
@@ -72,6 +67,7 @@ class Product extends Component {
                           onClick={(e) => {
                             this.setState({ image: index });
                           }}
+                          key={index}
                         >
                           {" "}
                           <img
@@ -85,7 +81,7 @@ class Product extends Component {
                     })}
                   </Smallimage>
                   <Mainimage>
-                    <Image>
+                    <Image color={this.state.color}>
                       <img
                         src={gallery[this.state.image]}
                         alt="shirt"
@@ -102,17 +98,45 @@ class Product extends Component {
 
                   <Content>
                     <h4>SIZE:</h4>
-                    <Size color="black" bcolor="white" text="XS" />
-                    <Size color="white" bcolor="black" text="S" />
+                    <Size
+                      color="black"
+                      bcolor="white"
+                      text="XS"
+                      onClick={(e) => {
+                        this.setState({ color: "white", bcolor: "black" });
+                      }}
+                    />
+                    <Size color="black" bcolor="white" text="S" />
                     <Size color="black" bcolor="white" text="M" />
                     <Size color="black" bcolor="white" text="L" />
                   </Content>
 
                   <Content>
                     <h4>COLOR:</h4>
-                    <Size color="white" bcolor="black" text="" />
-                    <Size color="white" bcolor="#5ECE7B" text="" />
-                    <Size color="white" bcolor="white" text="" />
+                    <Size
+                      color="white"
+                      bcolor="#D3D2D5"
+                      text=""
+                      onClick={(e) => {
+                        this.setState({ color: "#D3D2D5" });
+                      }}
+                    />
+                    <Size
+                      color="white"
+                      bcolor="#2B2B2B"
+                      text=""
+                      onClick={(e) => {
+                        this.setState({ color: "#2B2B2B" });
+                      }}
+                    />
+                    <Size
+                      color="white"
+                      bcolor="#0F6450"
+                      text=""
+                      onClick={(e) => {
+                        this.setState({ color: "#0F6450" });
+                      }}
+                    />
                   </Content>
 
                   <Content>
