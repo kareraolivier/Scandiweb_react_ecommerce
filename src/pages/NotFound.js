@@ -15,7 +15,7 @@ class NotFound extends Component {
       <Container>
         <Allcard>
           <Content>
-            <Paragraph>NotFound</Paragraph>
+            <Paragraph>Page NotFound</Paragraph>
             <br />
             <Link to="/">
               <Primarybutton>Go back to homepage</Primarybutton>
